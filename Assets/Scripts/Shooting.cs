@@ -6,7 +6,6 @@ public class Shooting : MonoBehaviour
 {
 
     private Camera _mainCamera;
-
     private Vector3 _mousePosition;
 
     void Start()
