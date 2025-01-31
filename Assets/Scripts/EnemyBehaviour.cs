@@ -7,7 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private Transform _player;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private float _speed = 3f;
-    [SerializeField] private float _rotateSpeed = 0.02f;
+    [SerializeField] private float _rotateSpeed = 0.025f;
 
 
 
