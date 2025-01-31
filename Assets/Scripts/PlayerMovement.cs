@@ -9,7 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private const float DECELERATION = 10.0f;
 
     [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _firingPoint;
 
+    [Range(0.1f,2f)]
+    [SerializeField] private float _firingRate = 0.5f;
+
+    private float _fireTimer;
     private Vector2 _movementInput;
     private Vector2 _currentVelocity;
     private float _speed;
@@ -20,11 +26,27 @@ public class PlayerMovement : MonoBehaviour
 
     void Update(){
         HandleInput();
+        ShootBehaviour();
     }
 
     void FixedUpdate()
     {
         ApplyMovement();
+    }
+
+    private void ShootBehaviour(){
+
+        if(Input.GetMouseButtonDown(0) && _fireTimer <= 0f){
+            Shoot();
+            _fireTimer = _firingRate;
+        }
+        else{
+            _fireTimer -= Time.deltaTime;
+        }
+    }
+
+    private void Shoot(){
+        Instantiate(_bulletPrefab, _firingPoint.position, _firingPoint.rotation);
     }
 
     private void HandleInput()
