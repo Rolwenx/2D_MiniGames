@@ -25,11 +25,4 @@ public class Bullet : MonoBehaviour
     {
         _rb.velocity = transform.up * _speed;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
-    }
 }
