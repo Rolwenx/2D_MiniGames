@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private int _playerLife = 3;
+    // private int _playerLife = 3;
     
 
 }

@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyMovement()
     {
         _currentVelocity = Vector2.Lerp(_currentVelocity, _movementInput * _speed, Time.fixedDeltaTime * (_movementInput.magnitude > 0 ? ACCELERATION : DECELERATION));
-        _rb.velocity = _currentVelocity;
+        _rb.linearVelocity = _currentVelocity;
     }
     
 }

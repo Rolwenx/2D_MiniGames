@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    [SerializeField] private float _spawnRate = 2f;
+    [SerializeField] private float _spawnRate = 4f;
     [SerializeField] private GameObject[] _enemyPrefab;
     private bool _canSpawn = true;
 

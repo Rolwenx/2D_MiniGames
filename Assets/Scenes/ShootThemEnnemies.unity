@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0110e9709d8bd4ee8ae37aad56f047a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnRate: 3
+  _spawnRate: 8
   _enemyPrefab:
   - {fileID: 3844674390783113307, guid: fe7ce54e00ce34346b5729e6d83f0a55, type: 3}
   - {fileID: 3415336983299096946, guid: 2653054c8c70042e0a10fb0e4944ef74, type: 3}
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0110e9709d8bd4ee8ae37aad56f047a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnRate: 1
+  _spawnRate: 2
   _enemyPrefab:
   - {fileID: 3844674390783113307, guid: fe7ce54e00ce34346b5729e6d83f0a55, type: 3}
   - {fileID: 3415336983299096946, guid: 2653054c8c70042e0a10fb0e4944ef74, type: 3}
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0110e9709d8bd4ee8ae37aad56f047a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnRate: 5
+  _spawnRate: 6
   _enemyPrefab:
   - {fileID: 3844674390783113307, guid: fe7ce54e00ce34346b5729e6d83f0a55, type: 3}
   - {fileID: 3415336983299096946, guid: 2653054c8c70042e0a10fb0e4944ef74, type: 3}
@@ -676,7 +676,7 @@ MonoBehaviour:
   _rb: {fileID: 1467109114}
   _bulletPrefab: {fileID: 5028589072907994449, guid: 8b75681b410a745f18347e6ffb7d0d70, type: 3}
   _firingPoint: {fileID: 392076136}
-  _firingRate: 1.14
+  _firingRate: 0.48
 --- !u!114 &1467109116
 MonoBehaviour:
   m_ObjectHideFlags: 0
