@@ -2,17 +2,10 @@
 A collection of fun and fast 2D mini-games made with Unity — perfect for a quick break, playing in class, or just killing time!
 The bundle includes multiple small games, and more are on the way.
 
-# Download & Play
-1. Go to the Builds folder.
-2. Choose the folder for your operating system:
-- Windows → .exe
-- macOS (Intel or Silicon) → .app
-3. Launch the game file.
-✅ Supports macOS Intel and Apple Silicon (M1/M2).
-
 # Play Online or Download (Itch.io)
-For an easier experience, detailed descriptions, downloads, and a WebGL playable version, visit: https://dorytoss.itch.io/ping-pong-game 
+For an easier experience, detailed descriptions, downloads, and a WebGL playable version, visit: https://dorytoss.itch.io/2d-mini-games
 
+👉 Mac (intel or Silicon) & Windows version
 
 # Included Games
 ### Endless Runner (Alien Space Flight)
