@@ -13,12 +13,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Update()
     {
-        // Get the target's position
         if (!_player){
             GetTarget();
         }
         else{
-            // Rotate towards the target
             RotateTowardsTarget();
         }
     }
@@ -51,9 +49,14 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            GameManager.instance.AddScore(10);
         }
-        else if(collision.gameObject.CompareTag("Player")){
-            Destroy(collision.gameObject);
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.instance.PlayerTakeDamage();
+            collision.gameObject.GetComponent<PlayerMovement>().FlashRed();
+            Destroy(gameObject);
         }
     }
+
 }

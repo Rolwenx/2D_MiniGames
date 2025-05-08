@@ -43,7 +43,7 @@ public class ER_GameManager : MonoBehaviour
         Time.timeScale = 0;
         _gameOverPanel.SetActive(true);
         int currentScore = Mathf.FloorToInt(ER_PlayerMove.instance.GetScore());
-        int savedHighScore = PlayerPrefs.GetInt("HighScore", 0);
+        int savedHighScore = PlayerPrefs.GetInt("ERGameHighScore", 0);
 
         if (_currentScore != null)
         {
@@ -52,11 +52,11 @@ public class ER_GameManager : MonoBehaviour
 
         if (currentScore > savedHighScore)
         {
-            PlayerPrefs.SetInt("HighScore", currentScore);
+            PlayerPrefs.SetInt("ERGameHighScore", currentScore);
             PlayerPrefs.Save();
         }
 
-        int finalHighScore = PlayerPrefs.GetInt("HighScore", 0);
+        int finalHighScore = PlayerPrefs.GetInt("ERGameHighScore", 0);
 
         if (_highScore != null)
         {

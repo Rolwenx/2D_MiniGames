@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer _spriteRenderer_gun;
     private const float INITIAL_SPEED = 8.0f; 
     private const float ACCELERATION = 10.0f;
     private const float DECELERATION = 10.0f;
@@ -20,10 +23,29 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _currentVelocity;
     private float _speed;
 
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     void Start(){
         _speed = INITIAL_SPEED;
     }
 
+    public void FlashRed()
+    {
+        StartCoroutine(FlashCoroutine());
+    }
+
+    private IEnumerator FlashCoroutine()
+    {
+        Color originalColor = _spriteRenderer.color;
+        _spriteRenderer.color = Color.red;
+        _spriteRenderer_gun.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        _spriteRenderer.color = originalColor;
+        _spriteRenderer_gun.color = originalColor;
+    }
     void Update(){
         HandleInput();
         ShootBehaviour();
