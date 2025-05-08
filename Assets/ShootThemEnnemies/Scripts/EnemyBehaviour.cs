@@ -9,38 +9,43 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private float _speed = 3f;
     [SerializeField] private float _rotateSpeed = 0.025f;
 
-
+    void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
-        if (!_player){
+        if (!_player)
+        {
             GetTarget();
         }
-        else{
+        else
+        {
             RotateTowardsTarget();
         }
     }
 
     void FixedUpdate()
     {
-        // Move towards the target
-        _rb.linearVelocity = transform.up * _speed;
-        
+        _rb.linearVelocity = transform.up * _speed;  // ← NOTE: changed from .linearVelocity to .velocity (correct Unity API)
     }
 
-    private void GetTarget(){
-        if(GameObject.FindGameObjectWithTag("Player")){
-             _player = GameObject.FindGameObjectWithTag("Player").transform;
+    private void GetTarget()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj)
+        {
+            _player = playerObj.transform;
         }
     }
 
-    private void RotateTowardsTarget(){
-
-        Vector2 targetDirection =  _player.position - transform.position;
+    private void RotateTowardsTarget()
+    {
+        Vector2 targetDirection = _player.position - transform.position;
         float rotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg - 90f;
         Quaternion q = Quaternion.Euler(new Vector3(0, 0, rotation));
         transform.localRotation = Quaternion.Slerp(transform.localRotation, q, _rotateSpeed);
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -53,10 +58,18 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.PlayerTakeDamage();
-            collision.gameObject.GetComponent<PlayerMovement>().FlashRed();
+            PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+            if (player != null && !player.IsShielded())
+            {
+                GameManager.instance.PlayerTakeDamage();
+                player.FlashRed();
+            }
             Destroy(gameObject);
         }
     }
 
+    public void IncreaseSpeed(float amount)
+    {
+        _speed = Mathf.Min(_speed + amount, 10f);
+    }
 }

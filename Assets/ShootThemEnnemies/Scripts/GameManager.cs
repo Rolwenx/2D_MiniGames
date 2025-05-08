@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
     [SerializeField] private int _playerLives = 5;
-    [SerializeField] private Image[] lifeImages;  
+    [SerializeField] private Image[] lifeImages;
 
     [SerializeField] private TMP_Text _scoreText;
 
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private TMP_Text _currentScoreText;
     [SerializeField] private TMP_Text _highScoreText;
+
     private int _score = 0;
 
     private void Awake()
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         _gameOverPanel.SetActive(false);
     }
-    
+
     public void AddScore(int points)
     {
         _score += points;

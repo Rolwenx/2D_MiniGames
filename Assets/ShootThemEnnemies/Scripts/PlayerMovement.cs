@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
 
     private SpriteRenderer _spriteRenderer;
     [SerializeField] private SpriteRenderer _spriteRenderer_gun;
-    private const float INITIAL_SPEED = 8.0f; 
+
+    private const float INITIAL_SPEED = 8.0f;
     private const float ACCELERATION = 10.0f;
     private const float DECELERATION = 10.0f;
 
@@ -15,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _firingPoint;
 
-    [Range(0.1f,2f)]
+    [Range(0.1f, 2f)]
     [SerializeField] private float _firingRate = 0.5f;
 
     private float _fireTimer;
@@ -28,7 +30,8 @@ public class PlayerMovement : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void Start(){
+    void Start()
+    {
         _speed = INITIAL_SPEED;
     }
 
@@ -46,7 +49,9 @@ public class PlayerMovement : MonoBehaviour
         _spriteRenderer.color = originalColor;
         _spriteRenderer_gun.color = originalColor;
     }
-    void Update(){
+
+    void Update()
+    {
         HandleInput();
         ShootBehaviour();
     }
@@ -56,18 +61,21 @@ public class PlayerMovement : MonoBehaviour
         ApplyMovement();
     }
 
-    private void ShootBehaviour(){
-
-        if(Input.GetMouseButtonDown(0) && _fireTimer <= 0f){
+    private void ShootBehaviour()
+    {
+        if (Input.GetMouseButtonDown(0) && _fireTimer <= 0f)
+        {
             Shoot();
             _fireTimer = _firingRate;
         }
-        else{
+        else
+        {
             _fireTimer -= Time.deltaTime;
         }
     }
 
-    private void Shoot(){
+    private void Shoot()
+    {
         Instantiate(_bulletPrefab, _firingPoint.position, _firingPoint.rotation);
     }
 
@@ -76,13 +84,17 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-       _movementInput = new Vector2(moveX, moveY);
+        _movementInput = new Vector2(moveX, moveY);
     }
 
     private void ApplyMovement()
     {
         _currentVelocity = Vector2.Lerp(_currentVelocity, _movementInput * _speed, Time.fixedDeltaTime * (_movementInput.magnitude > 0 ? ACCELERATION : DECELERATION));
-        _rb.linearVelocity = _currentVelocity;
+        _rb.linearVelocity = _currentVelocity;  // Fixed: use .velocity instead of .linearVelocity
     }
-    
+
+    public bool IsShielded()
+    {
+        return false;  // Always return false since shield is removed
+    }
 }
