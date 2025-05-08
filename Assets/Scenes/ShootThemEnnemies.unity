@@ -428,6 +428,7 @@ MonoBehaviour:
   - {fileID: 3844674390783113307, guid: fe7ce54e00ce34346b5729e6d83f0a55, type: 3}
   - {fileID: 1806305566757871580, guid: 31d56362ba90849e0a5b2fa8c706fc91, type: 3}
   splitterEnemyPrefab: {fileID: 1806305566757871580, guid: 5736c0a1c26424c4aad914c5175947f2, type: 3}
+  excludeSplitter: 0
   isMasterSpawner: 1
   splitterSpawnChance: 0.05
   maxSplitterChance: 0.15
@@ -903,6 +904,7 @@ MonoBehaviour:
   - {fileID: 3844674390783113307, guid: fe7ce54e00ce34346b5729e6d83f0a55, type: 3}
   - {fileID: 1806305566757871580, guid: 31d56362ba90849e0a5b2fa8c706fc91, type: 3}
   splitterEnemyPrefab: {fileID: 1806305566757871580, guid: 5736c0a1c26424c4aad914c5175947f2, type: 3}
+  excludeSplitter: 0
   isMasterSpawner: 0
   splitterSpawnChance: 0.05
   maxSplitterChance: 0.15
@@ -1893,6 +1895,7 @@ MonoBehaviour:
   - {fileID: 3844674390783113307, guid: fe7ce54e00ce34346b5729e6d83f0a55, type: 3}
   - {fileID: 1806305566757871580, guid: 31d56362ba90849e0a5b2fa8c706fc91, type: 3}
   splitterEnemyPrefab: {fileID: 1806305566757871580, guid: 5736c0a1c26424c4aad914c5175947f2, type: 3}
+  excludeSplitter: 1
   isMasterSpawner: 0
   splitterSpawnChance: 0.05
   maxSplitterChance: 0.15

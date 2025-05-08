@@ -10,6 +10,7 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private float spawnRateDecrease = 0.2f;
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private GameObject splitterEnemyPrefab;
+    [SerializeField] private bool excludeSplitter = false;
 
     public bool isMasterSpawner = false;
     [SerializeField, Range(0f, 1f)] private float splitterSpawnChance = 0.05f;
@@ -73,7 +74,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         float chance = Random.value;
 
-        if (chance < splitterSpawnChance)
+        if (!excludeSplitter && chance < splitterSpawnChance)
         {
             Instantiate(splitterEnemyPrefab, transform.position, Quaternion.identity);
         }
