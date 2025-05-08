@@ -28,7 +28,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
-        _rb.linearVelocity = transform.up * _speed;  // ← NOTE: changed from .linearVelocity to .velocity (correct Unity API)
+        _rb.linearVelocity = transform.up * _speed; 
     }
 
     private void GetTarget()

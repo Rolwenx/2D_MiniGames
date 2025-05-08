@@ -13,6 +13,11 @@ public class ER_GameManager : MonoBehaviour
     [SerializeField] private TMP_Text _currentScore;
     [SerializeField] private TMP_Text _highScore;
 
+    // Pause
+    [SerializeField] private GameObject _pausePanel;
+    private bool _isPaused = false;
+
+
 
     void Awake(){
         instance = this;
@@ -26,7 +31,13 @@ public class ER_GameManager : MonoBehaviour
         if(_playerLife <= 0){
             GameOver();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            TogglePause();
+        }
     }
+    
 
     public void LoseLife(){
 
@@ -64,6 +75,31 @@ public class ER_GameManager : MonoBehaviour
         }
 
     }
+
+    private void TogglePause()
+    {
+        _isPaused = !_isPaused;
+
+        if (_isPaused)
+        {
+            Time.timeScale = 0;
+            _pausePanel.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            _pausePanel.SetActive(false);
+        }
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        _pausePanel.SetActive(false);
+        _isPaused = false;
+    }
+
+
 
 
 }

@@ -57,6 +57,7 @@ public class Spawner : MonoBehaviour
         }
         rb.gravityScale = 0f;
         rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
         rb.linearVelocity = Vector2.left * _obstacleSpeed;
 
         Destroy(obstacle, obstacleLifetime);
