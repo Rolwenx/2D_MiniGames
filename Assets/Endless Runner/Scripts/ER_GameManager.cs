@@ -24,6 +24,7 @@ public class ER_GameManager : MonoBehaviour
         _playerLife = lifeBarHeart.Length;
         Time.timeScale = 1;
         _gameOverPanel.SetActive(false);
+        _pausePanel.SetActive(false);
     }
 
     void Update(){
@@ -98,8 +99,5 @@ public class ER_GameManager : MonoBehaviour
         _pausePanel.SetActive(false);
         _isPaused = false;
     }
-
-
-
 
 }

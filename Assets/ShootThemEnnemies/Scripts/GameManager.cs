@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text _currentScoreText;
     [SerializeField] private TMP_Text _highScoreText;
 
+    // Pause
+    [SerializeField] private GameObject _pausePanel;
+    private bool _isPaused = false;
+
     private int _score = 0;
 
     private void Awake()
@@ -29,6 +33,7 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1;
         _gameOverPanel.SetActive(false);
+        _pausePanel.SetActive(false);
     }
 
     public void AddScore(int points)
@@ -83,5 +88,35 @@ public class GameManager : MonoBehaviour
         {
             _highScoreText.text = "High Score: " + finalHighScore;
         }
+    }
+
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            TogglePause();
+        }
+    }
+
+    private void TogglePause()
+    {
+        _isPaused = !_isPaused;
+
+        if (_isPaused)
+        {
+            Time.timeScale = 0;
+            _pausePanel.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            _pausePanel.SetActive(false);
+        }
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        _pausePanel.SetActive(false);
+        _isPaused = false;
     }
 }
