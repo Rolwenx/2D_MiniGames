@@ -7,4 +7,8 @@ public class ER_SceneManage : MonoBehaviour
     {
         SceneManager.LoadScene(index);
     }
+
+    public void QuitGame(){
+        Application.Quit();
+    }
 }
